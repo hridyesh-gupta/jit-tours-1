@@ -130,7 +130,7 @@ export default async function handler(req, res) {
             </div>` : ''}
           </div>
           <div class="footer">
-            BharatWheels Outstation Car Rentals &bull; Automated Gmail Notification System
+            Jit Tours and Travels &bull; Automated Gmail Notification System
           </div>
         </div>
       </body>
@@ -138,43 +138,66 @@ export default async function handler(req, res) {
     `;
 
     // Customer Receipt HTML
+    // Customer Receipt HTML with Voucher & 1-Click WhatsApp Confirmation
+    const confirmWaMsg = encodeURIComponent(
+      `Hello Jit Tours and Travels, I have reviewed my booking data for Ref ID: ${bookingId} (${carType}, ${pickupCity} to ${dropCity}, ${pickupDate}). Everything is fine from my side, please confirm my reservation!`
+    );
+    const confirmWaUrl = `https://wa.me/919876543210?text=${confirmWaMsg}`;
+
     const customerHtml = `
       <!DOCTYPE html>
       <html>
       <head>
         <style>
-          body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 20px; }
-          .container { max-width: 580px; margin: 0 auto; background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-          .header { background: #0f172a; padding: 24px; text-align: center; color: #ffffff; }
-          .header h1 { margin: 0; font-size: 22px; color: #f59e0b; }
+          body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
+          .container { max-width: 600px; margin: 0 auto; background-color: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #334155; }
+          .header { background: linear-gradient(135deg, #f59e0b, #d97706); color: #090d16; padding: 24px; text-align: center; }
           .content { padding: 24px; }
-          .summary-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 16px 0; }
-          .footer { background: #f1f5f9; text-align: center; padding: 16px; color: #64748b; font-size: 12px; }
+          .card { background-color: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 16px; margin: 16px 0; }
+          .row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #1e293b; font-size: 14px; }
+          .row:last-child { border-bottom: none; }
+          .label { color: #94a3b8; }
+          .val { font-weight: bold; color: #f8fafc; }
+          .btn-confirm { display: block; width: 100%; text-align: center; background-color: #10b981; color: #ffffff; font-weight: bold; text-decoration: none; padding: 14px 20px; border-radius: 8px; font-size: 15px; margin-top: 20px; box-sizing: border-box; }
+          .footer { text-align: center; font-size: 11px; color: #64748b; padding: 16px; border-top: 1px solid #334155; }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
-            <h1>Namaste, ${fullName}! 🙏</h1>
-            <p style="margin: 4px 0 0 0; color: #94a3b8;">Your Car Rental Request Has Been Received</p>
+            <h2 style="margin: 0; font-size: 22px;">Booking Voucher & Confirmation Request</h2>
+            <p style="margin: 4px 0 0 0; color: #090d16; font-weight: bold;">Jit Tours and Travels &bull; UP & MP Regional Circuit</p>
           </div>
           <div class="content">
-            <p>Thank you for choosing <strong>BharatWheels Car Rentals</strong>! We have received your booking inquiry (Ref: <strong>${bookingId}</strong>).</p>
-            
-            <p>Our outstation travel specialist is reviewing your route from <strong>${pickupCity}</strong> to <strong>${dropCity}</strong> (${calculatedDistance}) and will call/WhatsApp you shortly at <strong>${phone}</strong> with the exact transparent quote & driver assignment.</p>
+            <p>Namaste <strong>${fullName}</strong>,</p>
+            <p>Thank you for booking with <strong>Jit Tours and Travels</strong>! Here is your official booking voucher data (Ref: <strong style="color: #f59e0b;">${bookingId}</strong>).</p>
 
-            <div class="summary-card">
-              <h4 style="margin: 0 0 10px 0; color: #d97706;">Trip Snapshot</h4>
-              <p style="margin: 4px 0;">🚘 <strong>Vehicle:</strong> ${carType}</p>
-              <p style="margin: 4px 0;">👥 <strong>Passengers:</strong> ${passengers}</p>
-              <p style="margin: 4px 0;">📅 <strong>Pickup Date:</strong> ${pickupDate} (${pickupTime})</p>
-              <p style="margin: 4px 0;">🛡️ <strong>Service Policy:</strong> 100% Sanitized, Verified Driver, Max 1500 km Route Limit</p>
+            <div class="card">
+              <div class="row"><span class="label">Booking Ref ID:</span><span class="val" style="color: #f59e0b;">${bookingId}</span></div>
+              <div class="row"><span class="label">Vehicle:</span><span class="val">${carType}</span></div>
+              <div class="row"><span class="label">Route:</span><span class="val">${pickupCity} ➔ ${dropCity}</span></div>
+              <div class="row"><span class="label">Estimated Distance:</span><span class="val">${calculatedDistance}</span></div>
+              <div class="row"><span class="label">Pickup Date:</span><span class="val">${pickupDate} (${pickupTime})</span></div>
+              <div class="row"><span class="label">Return Date:</span><span class="val">${returnDate}</span></div>
+              <div class="row"><span class="label">Passengers:</span><span class="val">${passengers}</span></div>
+              <div class="row"><span class="label">Driver Preference:</span><span class="val">${driverPreference}</span></div>
+              ${notes && notes !== 'N/A' ? `<div class="row"><span class="label">Special Notes:</span><span class="val">${notes}</span></div>` : ''}
             </div>
 
-            <p style="font-size: 13px; color: #475569;">If you need urgent assistance or custom changes, call our 24/7 Helpline at <strong>+91 98765 43210</strong>.</p>
+            <p style="font-size: 13px; color: #cbd5e1; background-color: #0f172a; padding: 12px; border-radius: 6px; border-left: 4px solid #f59e0b;">
+              <strong>Consumer Action Required:</strong> Please review your booking details above. If everything is fine, click the confirmation button below to confirm your reservation with our travel coordinator.
+            </p>
+
+            <a href="${confirmWaUrl}" class="btn-confirm" target="_blank">
+              ✅ CONFIRM MY RESERVATION ON WHATSAPP
+            </a>
+
+            <p style="font-size: 12px; color: #94a3b8; text-align: center; margin-top: 12px;">
+              Or call our 24/7 Helpline directly: <strong style="color: #f8fafc;">+91 98765 43210</strong>
+            </p>
           </div>
           <div class="footer">
-            BharatWheels Rentals &bull; Premium Outstation Travel Across India
+            Jit Tours and Travels &bull; Civil Lines / Sangam Area, Prayagraj, UP &bull; jittoursandtravels@gmail.com
           </div>
         </div>
       </body>
@@ -200,16 +223,16 @@ export default async function handler(req, res) {
     // Attempt email with graceful fallback
     try {
       await transporter.sendMail({
-        from: `"BharatWheels Inquiry System" <${process.env.GMAIL_USER}>`,
+        from: `"Jit Tours and Travels Inquiry System" <${process.env.GMAIL_USER}>`,
         to: receiver,
         subject: `🚘 [NEW BOOKING ${bookingId}] ${pickupCity} to ${dropCity} (${carType})`,
         html: adminHtml
       });
 
       await transporter.sendMail({
-        from: `"BharatWheels Rentals" <${process.env.GMAIL_USER}>`,
+        from: `"Jit Tours and Travels" <${process.env.GMAIL_USER}>`,
         to: email,
-        subject: `Booking Request Received [${bookingId}] - BharatWheels Car Rentals`,
+        subject: `Booking Request Received [${bookingId}] - Jit Tours and Travels`,
         html: customerHtml
       });
 

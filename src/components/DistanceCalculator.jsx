@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { INDIAN_CITIES, calculateRoadDistance, POPULAR_ROUTES } from '../data/indianCities';
-import { MapPin, Navigation, AlertTriangle, CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
+import { MapPin, Navigation, AlertTriangle, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function DistanceCalculator({ onOpenBookingWithRoute }) {
-  const [pickupCity, setPickupCity] = useState('mumbai');
-  const [dropCity, setDropCity] = useState('goa');
+  const [pickupCity, setPickupCity] = useState('prayagraj');
+  const [dropCity, setDropCity] = useState('varanasi');
 
   const result = calculateRoadDistance(pickupCity, dropCity);
   const pickupObj = INDIAN_CITIES.find(c => c.id === pickupCity);
@@ -25,13 +25,13 @@ export default function DistanceCalculator({ onOpenBookingWithRoute }) {
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
           <div className="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full text-amber-400 text-xs font-semibold">
             <Navigation className="w-3.5 h-3.5" />
-            <span>Interactive Route Validator</span>
+            <span>Interactive UP & MP Route Validator</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            Check Your Trip Distance <span className="text-amber-500">(Max 1,500 km Limit)</span>
+            Check Your Trip Distance <span className="text-amber-500">(UP & MP Destinations)</span>
           </h2>
           <p className="text-slate-400 text-sm sm:text-base">
-            We specialize in outstation road trips under 1,500 km across India to guarantee fresh luxury cars, top driver alertness, and maximum passenger safety.
+            Calculate accurate road distances and taxi estimates across Varanasi, Ayodhya, Prayagraj, Chitrakoot, Lucknow, Rewa, Khajuraho, Maihar, and more with Jit Tours and Travels.
           </p>
         </div>
 
@@ -57,11 +57,20 @@ export default function DistanceCalculator({ onOpenBookingWithRoute }) {
                   onChange={(e) => setPickupCity(e.target.value)}
                   className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 text-sm font-medium"
                 >
-                  {INDIAN_CITIES.map(city => (
-                    <option key={city.id} value={city.id}>
-                      {city.name}
-                    </option>
-                  ))}
+                  <optgroup label="Uttar Pradesh">
+                    {INDIAN_CITIES.filter(c => c.state === 'Uttar Pradesh').map(city => (
+                      <option key={city.id} value={city.id}>
+                        {city.name}
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Madhya Pradesh">
+                    {INDIAN_CITIES.filter(c => c.state === 'Madhya Pradesh').map(city => (
+                      <option key={city.id} value={city.id}>
+                        {city.name}
+                      </option>
+                    ))}
+                  </optgroup>
                 </select>
               </div>
 
@@ -75,11 +84,20 @@ export default function DistanceCalculator({ onOpenBookingWithRoute }) {
                   onChange={(e) => setDropCity(e.target.value)}
                   className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 text-sm font-medium"
                 >
-                  {INDIAN_CITIES.map(city => (
-                    <option key={city.id} value={city.id}>
-                      {city.name}
-                    </option>
-                  ))}
+                  <optgroup label="Uttar Pradesh">
+                    {INDIAN_CITIES.filter(c => c.state === 'Uttar Pradesh').map(city => (
+                      <option key={city.id} value={city.id}>
+                        {city.name}
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Madhya Pradesh">
+                    {INDIAN_CITIES.filter(c => c.state === 'Madhya Pradesh').map(city => (
+                      <option key={city.id} value={city.id}>
+                        {city.name}
+                      </option>
+                    ))}
+                  </optgroup>
                 </select>
               </div>
 
@@ -88,7 +106,7 @@ export default function DistanceCalculator({ onOpenBookingWithRoute }) {
             {/* Popular Shortcut Pills */}
             <div>
               <span className="block text-xs font-semibold text-slate-400 mb-2.5">
-                🔥 Popular Outstation Routes (Click to Check):
+                🔥 Popular Regional Circuits (Click to Check):
               </span>
               <div className="flex flex-wrap gap-2">
                 {POPULAR_ROUTES.map((route, idx) => (
@@ -101,7 +119,7 @@ export default function DistanceCalculator({ onOpenBookingWithRoute }) {
                         : 'bg-slate-900/80 hover:bg-slate-800 text-slate-300 border-slate-800'
                     }`}
                   >
-                    {route.name} ({route.distance} km)
+                    {route.name} (~{route.distance} km)
                   </button>
                 ))}
               </div>
@@ -109,7 +127,7 @@ export default function DistanceCalculator({ onOpenBookingWithRoute }) {
 
           </div>
 
-          {/* Result Card & 1500km Range Meter */}
+          {/* Result Card & Range Meter */}
           <div className="lg:col-span-6 glass-panel rounded-2xl p-6 space-y-6 border border-slate-800">
             
             <div className="flex justify-between items-center border-b border-slate-800 pb-4">
@@ -129,9 +147,9 @@ export default function DistanceCalculator({ onOpenBookingWithRoute }) {
             {/* Range Bar */}
             <div className="space-y-2">
               <div className="flex justify-between text-xs font-medium">
-                <span className="text-slate-400">Distance: {result.distanceKm} km</span>
+                <span className="text-slate-400">Calculated Distance: {result.distanceKm} km</span>
                 <span className={result.isWithinLimit ? 'text-amber-400 font-bold' : 'text-rose-400 font-bold'}>
-                  Max Limit: 1,500 km
+                  Max Operating Radius: 1,500 km
                 </span>
               </div>
 
@@ -153,9 +171,9 @@ export default function DistanceCalculator({ onOpenBookingWithRoute }) {
                 <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <div className="text-xs text-emerald-200">
                   <strong className="block font-semibold text-emerald-300 text-sm mb-0.5">
-                    Verified 1500 km Route Match!
+                    Direct Route Serviced by Jit Tours and Travels
                   </strong>
-                  This trip qualifies for our premium 4-seater sedans and 7-seater MPV rentals with zero outstation surcharges.
+                  Enjoy chauffeur-driven Dzire (5 Seater), Ertiga (7 Seater), and Innova Crysta (7 Seater) with door-to-door pickup.
                 </div>
               </div>
             ) : (
@@ -163,9 +181,9 @@ export default function DistanceCalculator({ onOpenBookingWithRoute }) {
                 <AlertTriangle className="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5" />
                 <div className="text-xs text-rose-200">
                   <strong className="block font-semibold text-rose-300 text-sm mb-0.5">
-                    Trip Distance Exceeds 1,500 km Limit
+                    Custom Long-Distance Package
                   </strong>
-                  To prevent driver fatigue and ensure vehicle safety, our maximum single-trip radius is 1,500 km. Contact our helpline to arrange a 2-stage split booking.
+                  Please WhatsApp or call our desk to organize customized multi-day halts for this journey.
                 </div>
               </div>
             )}

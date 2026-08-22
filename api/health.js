@@ -9,7 +9,7 @@ export default function handler(req, res) {
 
   res.status(200).json({
     status: 'ok',
-    service: 'BharatWheels Booking Backend',
+    service: 'Jit Tours and Travels Booking Backend',
     platform: 'Vercel Serverless',
     timestamp: new Date().toISOString(),
     gmailConfigured: Boolean(
