@@ -112,6 +112,18 @@ export default function Footer({ onOpenBooking }) {
             <span className="hover:text-slate-400 cursor-pointer">UP & MP Route Guide</span>
           </div>
         </div>
+
+        <div className="mt-4 text-center text-slate-600 text-[11px]">
+          Developed and maintained with ❤️ by{' '}
+          <a
+            href="https://ai.hridx.tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-400 hover:text-amber-400 transition"
+          >
+            HridxAI
+          </a>
+        </div>
       </div>
     </footer>
   );
