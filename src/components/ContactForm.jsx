@@ -157,7 +157,7 @@ export default function ContactForm({ isOpen, onClose, initialCar = null, initia
                   </label>
                   <input
                     type="tel"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 70811 29697"
                     value={formData.phone}
                     onChange={(e) => handleChange('phone', e.target.value)}
                     className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white text-sm focus:border-amber-500 focus:outline-none"

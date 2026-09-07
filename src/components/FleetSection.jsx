@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { VEHICLE_FLEET, OWNER_PHONE, OWNER_PHONE_DISPLAY, getCarWhatsAppLink } from '../data/fleetData';
+import { VEHICLE_FLEET, OWNER_PHONE, OWNER_PHONE_DISPLAY, OWNER_WHATSAPP_NUMBER, getCarWhatsAppLink } from '../data/fleetData';
 import { Users, Briefcase, ArrowRight, PhoneCall, MessageCircle, Sparkles } from 'lucide-react';
 
 export default function FleetSection({ onOpenBookingWithCar }) {
@@ -49,7 +49,7 @@ export default function FleetSection({ onOpenBookingWithCar }) {
         {/* Fleet Row — horizontally scrollable */}
         <div className="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
           {filteredFleet.map((car) => {
-            const whatsappUrl = getCarWhatsAppLink(car.name, car.passengers, car.ratePerKm);
+            const whatsappUrl = getCarWhatsAppLink(car.name, car.passengers);
             const shortName = car.name.split('(')[0].trim();
 
             return (
@@ -71,13 +71,7 @@ export default function FleetSection({ onOpenBookingWithCar }) {
 
                 {/* Content */}
                 <div className="p-4 space-y-3 flex-grow">
-                  <div className="flex justify-between items-start gap-2">
-                    <h3 className="text-base font-bold text-white leading-tight">{shortName}</h3>
-                    <div className="text-right flex-shrink-0">
-                      <span className="text-lg font-extrabold text-amber-400">₹{car.ratePerKm}</span>
-                      <span className="text-[10px] text-slate-400 block -mt-0.5">/km</span>
-                    </div>
-                  </div>
+                  <h3 className="text-base font-bold text-white leading-tight">{shortName}</h3>
 
                   <div className="flex items-center gap-4 text-[11px] text-slate-400">
                     <span className="flex items-center gap-1">
@@ -136,7 +130,7 @@ export default function FleetSection({ onOpenBookingWithCar }) {
             </a>
 
             <a
-              href={`https://wa.me/919876543210?text=${encodeURIComponent('Hello Jit Tours and Travels, I want to book a car. Please share available options.')}`}
+              href={`https://wa.me/${OWNER_WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello Jit Tours and Travels, I want to book a car. Please share available options.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold flex items-center space-x-2 transition shadow-lg shadow-emerald-500/20"

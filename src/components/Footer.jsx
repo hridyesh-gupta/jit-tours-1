@@ -93,7 +93,7 @@ export default function Footer({ onOpenBooking }) {
               </div>
               <div className="flex items-start space-x-2 text-slate-400 pt-1">
                 <MapPin className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
-                <span>Civil Lines / Sangam Area, Prayagraj, Uttar Pradesh</span>
+                <span>Prayagraj (Allahabad), Uttar Pradesh</span>
               </div>
             </div>
           </div>
@@ -113,13 +113,13 @@ export default function Footer({ onOpenBooking }) {
           </div>
         </div>
 
-        <div className="mt-4 text-center text-slate-600 text-[11px]">
+        <div className="mt-4 text-center text-white text-[11px]">
           Developed and maintained with ❤️ by{' '}
           <a
             href="https://ai.hridx.tech"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-400 hover:text-amber-400 transition"
+            className="font-bold text-white hover:text-amber-400 transition"
           >
             HridxAI
           </a>

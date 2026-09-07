@@ -1,10 +1,10 @@
-export const OWNER_PHONE = '+919876543210';
-export const OWNER_PHONE_DISPLAY = '+91 98765 43210';
-export const OWNER_WHATSAPP_NUMBER = '919876543210';
-export const OWNER_EMAIL = 'jittoursandtravels@gmail.com';
+export const OWNER_PHONE = '+917081129697';
+export const OWNER_PHONE_DISPLAY = '+91 70811 29697';
+export const OWNER_WHATSAPP_NUMBER = '917081129697';
+export const OWNER_EMAIL = 'jitsonker2004@gmail.com';
 
-export const getCarWhatsAppLink = (carName, passengers, ratePerKm) => {
-  const text = `Hello Jit Tours and Travels, I am interested in booking *${carName}* (${passengers} Seater, ₹${ratePerKm}/km). Please provide availability, final quotation, and booking details.`;
+export const getCarWhatsAppLink = (carName, passengers) => {
+  const text = `Hello Jit Tours and Travels, I am interested in booking *${carName}* (${passengers} Seater). Please provide availability, final quotation, and booking details.`;
   return `https://wa.me/${OWNER_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 };
 
