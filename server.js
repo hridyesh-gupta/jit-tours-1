@@ -414,7 +414,7 @@ app.post('/api/inquiry', async (req, res) => {
       });
     }
 
-    const bookingId = `BW-${Math.floor(100000 + Math.random() * 900000)}`;
+    const bookingId = `JIT-${Math.floor(100000 + Math.random() * 900000)}`;
     const submissionTime = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
 
     // Store inquiry in memory
