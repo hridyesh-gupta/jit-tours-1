@@ -24,6 +24,7 @@ const KNOWN_PLACE_NAMES = new Set([
   ...LOCAL_ATTRACTIONS.map(p => p.name),
   ...ALL_DESTINATIONS.map(d => d.name)
 ]);
+const KNOWN_CAR_NAMES = new Set(VEHICLE_FLEET.map(c => c.name));
 
 export default function ContactForm({ isOpen, onClose, initialCar = null, initialPlace = null }) {
   const [loading, setLoading] = useState(false);
@@ -175,6 +176,9 @@ export default function ContactForm({ isOpen, onClose, initialCar = null, initia
                   className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white text-sm focus:border-amber-500 focus:outline-none"
                 >
                   <option value="">Not Sure / Recommend for Me</option>
+                  {formData.carType && !KNOWN_CAR_NAMES.has(formData.carType) && (
+                    <option value={formData.carType}>{formData.carType}</option>
+                  )}
                   {VEHICLE_FLEET.map(car => (
                     <option key={car.id} value={car.name}>{car.name}</option>
                   ))}
