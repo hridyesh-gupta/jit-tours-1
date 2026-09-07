@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import DistanceCalculator from './components/DistanceCalculator';
 import FleetSection from './components/FleetSection';
 import PopularDestinationsSection from './components/PopularDestinationsSection';
 import LocalAttractionsSection from './components/LocalAttractionsSection';
@@ -30,10 +29,6 @@ export default function App() {
 
       <main className="flex-grow">
         <Hero
-          onOpenBooking={handleOpenBooking}
-        />
-
-        <DistanceCalculator
           onOpenBooking={handleOpenBooking}
         />
 

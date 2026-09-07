@@ -1,8 +1,6 @@
 // Popular destinations Jit Tours and Travels covers from Prayagraj, across UP & MP.
-// "featured" destinations get a full visual card; the rest show in the
-// "Explore All Destinations" list. No stock photos are used here on purpose —
-// swap in real photos later (public/images/destinations/<id>.jpg) the same
-// way the fleet photos were wired in.
+// "featured" destinations get a full visual card with a real photo; the rest
+// show in the "Explore All Destinations" list.
 
 export const FEATURED_DESTINATIONS = [
   {
@@ -10,7 +8,7 @@ export const FEATURED_DESTINATIONS = [
     name: 'Varanasi',
     subtitle: 'Kashi / Banaras',
     state: 'Uttar Pradesh',
-    icon: 'Flame',
+    image: '/images/varanasi.jpg',
     tagline: 'Ghats, Ganga Aarti & Kashi Vishwanath',
     description: 'The spiritual capital of India. Witness the iconic Ganga Aarti at Dashashwamedh Ghat and seek blessings at the Kashi Vishwanath Temple.',
     tags: ['Ganga Aarti', 'Kashi Vishwanath', 'Ghats'],
@@ -22,7 +20,7 @@ export const FEATURED_DESTINATIONS = [
     name: 'Ayodhya',
     subtitle: 'Ram Janmabhoomi',
     state: 'Uttar Pradesh',
-    icon: 'Landmark',
+    image: '/images/ayodhya.jpg',
     tagline: 'Shri Ram Janmabhoomi Mandir',
     description: 'The birthplace of Lord Ram. Visit the grand Ram Mandir, Hanuman Garhi, and the sacred Sarayu river ghats.',
     tags: ['Ram Mandir', 'Hanuman Garhi', 'Sarayu Ghat'],
@@ -34,7 +32,7 @@ export const FEATURED_DESTINATIONS = [
     name: 'Lucknow',
     subtitle: 'City of Nawabs',
     state: 'Uttar Pradesh',
-    icon: 'Building2',
+    image: '/images/lucknow.jpg',
     tagline: 'Bara Imambara, Chikankari & Awadhi Cuisine',
     description: 'The elegant capital of UP, famous for Nawabi architecture, Bara Imambara, Rumi Darwaza, and legendary Awadhi food.',
     tags: ['Bara Imambara', 'Awadhi Cuisine', 'Heritage City'],
@@ -46,7 +44,7 @@ export const FEATURED_DESTINATIONS = [
     name: 'Sarnath',
     subtitle: 'Buddhist Heritage Circuit',
     state: 'Uttar Pradesh',
-    icon: 'CircleDot',
+    image: '/images/sarnath.jpg',
     tagline: 'Where Buddha Gave His First Sermon',
     description: 'A major Buddhist pilgrimage site near Varanasi, home to the Dhamekh Stupa and the Ashoka Pillar.',
     tags: ['Dhamekh Stupa', 'Buddhist Circuit', 'Ashoka Pillar'],
@@ -54,15 +52,27 @@ export const FEATURED_DESTINATIONS = [
     recommendedCar: 'Dzire / Ertiga'
   },
   {
-    id: 'mathura-vrindavan',
-    name: 'Mathura & Vrindavan',
+    id: 'mathura',
+    name: 'Mathura',
     subtitle: 'Shri Krishna Janmabhoomi',
     state: 'Uttar Pradesh',
-    icon: 'Flower2',
-    tagline: 'Krishna Janmabhoomi & Banke Bihari Temple',
-    description: 'The land of Lord Krishna. Visit Krishna Janmabhoomi in Mathura and the Banke Bihari & Prem Mandir in Vrindavan.',
-    tags: ['Krishna Janmabhoomi', 'Banke Bihari', 'Prem Mandir'],
+    image: '/images/mathura.jpg',
+    tagline: 'Krishna Janmabhoomi Temple',
+    description: 'The birthplace of Lord Krishna, home to the Krishna Janmabhoomi temple complex.',
+    tags: ['Krishna Janmabhoomi', 'Temple Town'],
     approxDistance: '~445 km from Prayagraj',
+    recommendedCar: 'Innova Crysta / Force Urbania'
+  },
+  {
+    id: 'vrindavan',
+    name: 'Vrindavan',
+    subtitle: 'Banke Bihari & Prem Mandir',
+    state: 'Uttar Pradesh',
+    image: '/images/vrindavan.jpg',
+    tagline: 'Land of Radha-Krishna',
+    description: 'Visit the Banke Bihari Temple and the stunning Prem Mandir, just next to Mathura.',
+    tags: ['Banke Bihari', 'Prem Mandir'],
+    approxDistance: '~450 km from Prayagraj',
     recommendedCar: 'Innova Crysta / Force Urbania'
   },
   {
@@ -70,7 +80,7 @@ export const FEATURED_DESTINATIONS = [
     name: 'Agra',
     subtitle: 'Taj Mahal',
     state: 'Uttar Pradesh',
-    icon: 'Landmark',
+    image: '/images/agra.jpg',
     tagline: 'Taj Mahal & Agra Fort',
     description: 'Home to the Taj Mahal, one of the Seven Wonders of the World, along with the majestic Agra Fort.',
     tags: ['Taj Mahal', 'Agra Fort', 'UNESCO Site'],
@@ -82,7 +92,7 @@ export const FEATURED_DESTINATIONS = [
     name: 'Chitrakoot',
     subtitle: 'Ram Ghat & Kamadgiri (UP-MP Border)',
     state: 'Uttar Pradesh & Madhya Pradesh',
-    icon: 'Mountain',
+    image: '/images/chitrakoot.jpg',
     tagline: 'Where Lord Ram Spent His Exile',
     description: 'A sacred hill town straddling UP and MP. Covers Ram Ghat, Kamadgiri Parikrama, Gupt Godavari, and Sati Anusuya Ashram.',
     tags: ['Kamadgiri', 'Ram Ghat', 'Gupt Godavari'],
@@ -94,7 +104,7 @@ export const FEATURED_DESTINATIONS = [
     name: 'Rewa Waterfalls',
     subtitle: 'Keoti, Chachai & Bahuti',
     state: 'Madhya Pradesh',
-    icon: 'Waves',
+    image: '/images/rewa.jpg',
     tagline: 'Land of White Tigers & Monsoon Waterfalls',
     description: 'Home to some of India\'s tallest waterfalls — Keoti, Chachai, and Bahuti — best visited in the monsoon.',
     tags: ['Waterfalls', 'White Tigers', 'Monsoon Trip'],
@@ -106,7 +116,7 @@ export const FEATURED_DESTINATIONS = [
     name: 'Khajuraho',
     subtitle: 'UNESCO World Heritage Temples',
     state: 'Madhya Pradesh',
-    icon: 'Landmark',
+    image: '/images/khajuraho.jpg',
     tagline: 'Ancient Temple Architecture',
     description: 'World-famous for its intricately carved temples, recognized as a UNESCO World Heritage Site.',
     tags: ['UNESCO Site', 'Temple Architecture', 'Heritage'],
@@ -118,7 +128,7 @@ export const FEATURED_DESTINATIONS = [
     name: 'Bandhavgarh National Park',
     subtitle: 'Tiger Reserve',
     state: 'Madhya Pradesh',
-    icon: 'TreePine',
+    image: '/images/bandhavgarh.jpg',
     tagline: 'One of India\'s Best Tiger Reserves',
     description: 'A premier wildlife destination known for having one of the highest tiger densities in India.',
     tags: ['Tiger Safari', 'Wildlife', 'National Park'],

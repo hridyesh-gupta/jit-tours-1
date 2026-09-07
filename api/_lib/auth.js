@@ -26,24 +26,24 @@ export function verifyCredentials(username, password) {
   );
 }
 
+// The token's inner payload is JSON, not a hand-built "field.field.field"
+// string — a plain "." join broke as soon as a username contained a dot
+// (e.g. an email address), since decoding just split on every dot.
 export function createSessionToken(username) {
-  const expires = Date.now() + TOKEN_TTL_MS;
-  const payload = `${username}.${expires}`;
+  const payload = JSON.stringify({ u: username, exp: Date.now() + TOKEN_TTL_MS });
   const sig = crypto.createHmac('sha256', process.env.ADMIN_SESSION_SECRET).update(payload).digest('hex');
-  return Buffer.from(`${payload}.${sig}`).toString('base64url');
+  return Buffer.from(JSON.stringify({ p: payload, s: sig })).toString('base64url');
 }
 
 export function verifySessionToken(token) {
   if (!isAdminConfigured() || !token) return false;
   try {
-    const decoded = Buffer.from(token, 'base64url').toString('utf8');
-    const parts = decoded.split('.');
-    if (parts.length !== 3) return false;
+    const { p, s } = JSON.parse(Buffer.from(token, 'base64url').toString('utf8'));
+    const expected = crypto.createHmac('sha256', process.env.ADMIN_SESSION_SECRET).update(p).digest('hex');
+    if (!safeEqual(s, expected)) return false;
 
-    const [username, expires, sig] = parts;
-    const expected = crypto.createHmac('sha256', process.env.ADMIN_SESSION_SECRET).update(`${username}.${expires}`).digest('hex');
-    if (!safeEqual(sig, expected)) return false;
-    if (Date.now() > Number(expires)) return false;
+    const { exp } = JSON.parse(p);
+    if (Date.now() > exp) return false;
 
     return true;
   } catch {

@@ -9,7 +9,7 @@ export const LOCAL_ATTRACTIONS = [
     description: 'The world-famous sacred confluence of the three holy rivers: the Ganga, Yamuna, and invisible Saraswati. Renowned for spiritual holy dips, the grand Maha Kumbh Mela, and scenic sunset boat rides.',
     bestTime: 'Early Morning (05:00 AM - 09:00 AM) or Sunset',
     entryFee: 'Free (Boat rides available at ghats)',
-    image: 'https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=800&q=80',
+    image: '/images/triveni-sangam.jpg',
     tags: ['Holy Dip', 'Boat Rides', 'Kumbh Site', 'Sunset Views'],
     recommendedCar: 'Dzire 5-Seater / Ertiga 7-Seater'
   },
@@ -22,7 +22,7 @@ export const LOCAL_ATTRACTIONS = [
     description: 'Built by Emperor Akbar in 1583 at the confluence of the rivers. Features colossal walls, the Ashoka Pillar, Jodh Bai Mahal, and access to the sacred underground Patalpuri Temple.',
     bestTime: '09:30 AM – 05:00 PM',
     entryFee: 'Free / Archaeological Survey of India rules',
-    image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80',
+    image: '/images/allahabad-fort.jpg',
     tags: ['Akbar Fort', 'Ashoka Pillar', 'River View', 'Patalpuri'],
     recommendedCar: 'Dzire 5-Seater / Innova Crysta 7-Seater'
   },
@@ -35,7 +35,7 @@ export const LOCAL_ATTRACTIONS = [
     description: 'The world-famous sacred temple of Lord Hanuman in a unique reclining posture (Lete Hue Hanuman Ji) on the banks of holy river Ganga near Sangam, Prayagraj. Covered in sacred vermillion sindoor and worshipped for divine strength and blessings.',
     bestTime: '05:00 AM – 09:00 PM (Tuesdays & Saturdays special aarti)',
     entryFee: 'Free Entry',
-    image: '/images/bade_hanuman_temple.jpg',
+    image: '/images/bade-hanuman-mandir.jpg',
     tags: ['Lord Hanuman Temple', 'Lete Hue Hanuman Ji', 'Sangam Bank', 'Saffron Sindoor', 'Spiritual Aarti'],
     recommendedCar: 'Ertiga 7-Seater / Dzire 5-Seater'
   },
@@ -48,7 +48,7 @@ export const LOCAL_ATTRACTIONS = [
     description: 'The revered ancient temple of Lord Shiva located near Saraswati Ghat on the banks of river Yamuna in Prayagraj. Believed to fulfill all heartfelt desires (Mankamna) of devotees, housing the sacred black stone Shiva Lingam adorned with Belpatra, Trishul, and holy offerings.',
     bestTime: '05:00 AM – 12:00 PM & 04:00 PM – 09:00 PM',
     entryFee: 'Free Entry',
-    image: '/images/mankameshwar_shiva_temple.jpg',
+    image: '/images/mankameshwar-temple.jpg',
     tags: ['Lord Shiva Temple', 'Shivling & Trishul', 'Yamuna Bank', 'Wish Fulfilling', 'Sawan Aarti'],
     recommendedCar: 'Dzire 5-Seater / Ertiga 7-Seater'
   },
@@ -61,7 +61,7 @@ export const LOCAL_ATTRACTIONS = [
     description: 'A stunning colonial Anglican cathedral also celebrated as "Patthar Girja" in Civil Lines, Prayagraj. Commissioned in 1871 and designed by Sir William Emerson, featuring towering Gothic bell towers, stained-glass rose windows, and European stone architecture.',
     bestTime: '09:00 AM – 05:00 PM',
     entryFee: 'Free Entry',
-    image: '/images/all_saints_cathedral.jpg',
+    image: '/images/all-saints-cathedral.jpg',
     tags: ['Patthar Girja', 'Gothic Cathedral', 'Civil Lines Prayagraj', 'Rose Window'],
     recommendedCar: 'Dzire 5-Seater / Innova Crysta'
   },
@@ -74,7 +74,7 @@ export const LOCAL_ATTRACTIONS = [
     description: 'The sacred indestructible banyan tree mentioned in Vedic scriptures and the Ramayana. Believed to withstand the end of world cosmic cycles, located inside the Allahabad Fort complex.',
     bestTime: '07:00 AM – 05:00 PM',
     entryFee: 'Free (ID Proof required for Fort Entry)',
-    image: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80',
+    image: '/images/akshayavat.jpg',
     tags: ['Immortal Tree', 'Ramayana History', 'Vedic Pilgrimage', 'Fort Complex'],
     recommendedCar: 'Dzire 5-Seater / Innova Crysta'
   },
@@ -87,7 +87,7 @@ export const LOCAL_ATTRACTIONS = [
     description: 'A grand historic two-story mansion that served as the focal point of the Indian Freedom Movement. Now converted into a well-preserved memorial museum with colonial architecture and planetary exhibits.',
     bestTime: '09:30 AM – 05:00 PM (Closed on Mondays)',
     entryFee: '₹70 for Adults (approx)',
-    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80',
+    image: '/images/anand-bhavan.jpg',
     tags: ['Freedom Movement', 'Colonial Mansion', 'Planetarium', 'Lush Lawns'],
     recommendedCar: 'Dzire 5-Seater / Ertiga 7-Seater'
   },
@@ -100,7 +100,7 @@ export const LOCAL_ATTRACTIONS = [
     description: 'The ancestral property of Motilal Nehru, later donated to the Indian National Congress in 1930. The birthplace of former Prime Minister Indira Gandhi, housing rich photo galleries and sound-and-light shows.',
     bestTime: '10:00 AM – 05:00 PM',
     entryFee: 'Nominal Ticket',
-    image: 'https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=800&q=80',
+    image: '/images/swaraj-bhavan.jpg',
     tags: ['Historic Congress Office', 'Nehru Legacy', 'Indira Gandhi Birthplace', 'Museum'],
     recommendedCar: 'Dzire 5-Seater / Innova Crysta'
   },
@@ -113,7 +113,7 @@ export const LOCAL_ATTRACTIONS = [
     description: 'A quadrangle Mughal garden containing the intricately carved sandstone tombs of Prince Khusro (eldest son of Emperor Jahangir), his mother Shah Begum, and sister Nithar Begum with lush guava orchards.',
     bestTime: '06:00 AM – 07:00 PM',
     entryFee: 'Free Entry',
-    image: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80',
+    image: '/images/khusro-bagh.jpg',
     tags: ['Mughal Mausoleums', 'Guava Orchards', 'Sandstone Art', 'Peaceful Walk'],
     recommendedCar: 'Dzire 5-Seater / Ertiga 7-Seater'
   },
@@ -126,7 +126,7 @@ export const LOCAL_ATTRACTIONS = [
     description: 'The historic park where freedom fighter Chandrashekhar Azad gave his supreme sacrifice for India’s freedom in 1931. Home to the Allahabad Museum, Victoria Memorial, and Public Library.',
     bestTime: '05:00 AM – 08:00 PM',
     entryFee: '₹10 entry / Morning walkers free',
-    image: 'https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80',
+    image: '/images/chandrashekhar-azad-park.jpg',
     tags: ['Azad Memorial', 'Company Bagh', 'Allahabad Museum', 'Walking Track'],
     recommendedCar: 'Dzire 5-Seater / Ertiga 7-Seater'
   }
