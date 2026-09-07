@@ -109,10 +109,6 @@ export default function TestimonialsFAQ() {
       a: 'We cover all major religious and tourist circuits including Varanasi (Kashi), Ayodhya (Ram Mandir), Prayagraj, Chitrakoot, Vindhyachal, Mirzapur, Mathura-Vrindavan, Agra, Rewa Waterfalls, Khajuraho, Maihar, Bandhavgarh, and Panna.'
     },
     {
-      q: 'How does your transparent per-kilometer pricing work?',
-      a: 'Our fares are calculated as: Total Fare = (Total Distance in KM × Rate per KM) + (Number of Days × Driver Daily Allowance) + Actual State Tolls/Permits. Dzire starts at ₹13/km, Ertiga at ₹17/km, Innova Crysta at ₹21/km, and the Force Urbania (17-Seater) at ₹32/km.'
-    },
-    {
       q: 'Do you provide Airport and Railway Station pickup & drop in Prayagraj?',
       a: 'Yes! We provide 24/7 terminal pickup and drops at Prayagraj Airport (IXD), Prayagraj Junction (PRYJ), Varanasi Airport (VNS), and Lucknow Airport (LKO) with real-time schedule tracking and zero surge pricing.'
     }

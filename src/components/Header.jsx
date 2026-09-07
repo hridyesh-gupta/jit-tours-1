@@ -17,8 +17,8 @@ export default function Header({ onOpenBooking }) {
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center shadow-lg shadow-amber-500/20 flex-shrink-0">
             <Compass className="w-5 h-5 text-slate-950 stroke-[2.5]" />
           </div>
-          <span className="font-extrabold text-lg sm:text-xl tracking-tight text-white font-outfit whitespace-nowrap">
-            JIT<span className="text-amber-500"> TOURS</span>
+          <span className="font-extrabold text-base sm:text-lg lg:text-xl tracking-tight text-white font-outfit whitespace-nowrap">
+            JIT<span className="text-amber-500"> TOURS AND TRAVELS</span>
           </span>
         </div>
 

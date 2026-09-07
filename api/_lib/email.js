@@ -130,7 +130,7 @@ export function buildCustomerConfirmationEmail({ bookingId, fullName, carType, p
           </p>
         </div>
         <div class="footer" style="color: ${C.faint};">
-          Jit Tours and Travels &bull; Civil Lines / Sangam Area, Prayagraj, UP &bull; ${OWNER_EMAIL}
+          Jit Tours and Travels &bull; Prayagraj (Allahabad), Uttar Pradesh &bull; ${OWNER_EMAIL}
         </div>
       </div>
     </body>
