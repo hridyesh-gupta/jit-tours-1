@@ -1,28 +1,6 @@
 import React, { useState } from 'react';
 import { FEATURED_DESTINATIONS, MORE_DESTINATIONS } from '../data/destinationsData';
-import {
-  Flame,
-  Landmark,
-  Building2,
-  CircleDot,
-  Flower2,
-  Mountain,
-  Waves,
-  TreePine,
-  Compass,
-  ArrowRight,
-  ChevronDown
-} from 'lucide-react';
-
-const ICONS = { Flame, Landmark, Building2, CircleDot, Flower2, Mountain, Waves, TreePine };
-
-const CARD_GRADIENTS = [
-  'from-amber-500/25 via-slate-900 to-slate-950',
-  'from-orange-500/25 via-slate-900 to-slate-950',
-  'from-rose-500/20 via-slate-900 to-slate-950',
-  'from-emerald-500/20 via-slate-900 to-slate-950',
-  'from-sky-500/20 via-slate-900 to-slate-950'
-];
+import { Compass, ArrowRight, ChevronDown } from 'lucide-react';
 
 export default function PopularDestinationsSection({ onOpenBooking }) {
   const [showAll, setShowAll] = useState(false);
@@ -46,17 +24,18 @@ export default function PopularDestinationsSection({ onOpenBooking }) {
 
         {/* Featured Destination Cards — horizontally scrollable */}
         <div className="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
-          {FEATURED_DESTINATIONS.map((dest, idx) => {
-            const Icon = ICONS[dest.icon] || Compass;
-            const gradient = CARD_GRADIENTS[idx % CARD_GRADIENTS.length];
-
+          {FEATURED_DESTINATIONS.map((dest) => {
             return (
               <div
                 key={dest.id}
                 className="flex-shrink-0 w-[240px] snap-start glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-amber-500/40 transition-all duration-300 flex flex-col shadow-xl"
               >
-                <div className={`relative h-28 bg-gradient-to-br ${gradient} flex items-center justify-center border-b border-slate-800`}>
-                  <Icon className="w-11 h-11 text-amber-400/90 stroke-[1.5]" />
+                <div className="relative h-32 bg-slate-900 overflow-hidden">
+                  <img
+                    src={dest.image}
+                    alt={dest.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 <div className="p-4 space-y-2 flex-grow">
