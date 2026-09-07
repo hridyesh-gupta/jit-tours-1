@@ -23,17 +23,17 @@ export default function FleetSection({ onOpenBookingWithCar }) {
             <span>PREMIUM VERIFIED FLEET</span>
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            Our Vehicle Variety <span className="text-amber-500">(5 & 7 Seaters)</span>
+            Our Vehicle Variety <span className="text-amber-500">(5, 7 & 17 Seaters)</span>
           </h2>
           <p className="text-slate-400 text-sm sm:text-base">
-            Choose from our top-tier fleet including <strong className="text-slate-200">Dzire (5 Seater)</strong>, <strong className="text-slate-200">Ertiga (7 Seater)</strong>, and <strong className="text-slate-200">Innova Crysta (7 Seater)</strong>. Clean cars, verified chauffeurs & direct owner contact.
+            Choose from our fleet including <strong className="text-slate-200">Dzire (5 Seater)</strong>, <strong className="text-slate-200">Ertiga (7 Seater)</strong>, <strong className="text-slate-200">Innova Crysta (7 Seater)</strong>, and the <strong className="text-slate-200">Force Urbania (17 Seater)</strong> for large groups. Clean cars, verified chauffeurs & direct owner contact.
           </p>
         </div>
 
         {/* Fleet Filter Tabs */}
         <div className="flex justify-center mb-12">
           <div className="bg-slate-900/90 border border-slate-800 p-1.5 rounded-xl inline-flex space-x-1 sm:space-x-2">
-            {['All', '5-Seater', '7-Seater', 'Luxury'].map((tab) => (
+            {['All', '5-Seater', '7-Seater', 'Group Traveller'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -43,7 +43,7 @@ export default function FleetSection({ onOpenBookingWithCar }) {
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
                 }`}
               >
-                {tab === 'All' ? 'All Vehicles' : tab === '5-Seater' ? '5-Seater Cars (Dzire)' : tab === '7-Seater' ? '7-Seater MPVs (Ertiga / Innova)' : 'Luxury VIP'}
+                {tab === 'All' ? 'All Vehicles' : tab === '5-Seater' ? '5-Seater Cars (Dzire)' : tab === '7-Seater' ? '7-Seater MPVs (Ertiga / Innova)' : 'Group Traveller (Urbania)'}
               </button>
             ))}
           </div>
@@ -179,7 +179,7 @@ export default function FleetSection({ onOpenBookingWithCar }) {
             </div>
             <div>
               <h4 className="text-base font-bold text-white">Need an Instant Custom Fleet Quote?</h4>
-              <p className="text-xs text-slate-400">Directly speak with the fleet owner on call or WhatsApp for Dzire 5-Seater, Ertiga 7-Seater & Innova Crysta rentals.</p>
+              <p className="text-xs text-slate-400">Directly speak with the fleet owner on call or WhatsApp for Dzire, Ertiga, Innova Crysta & Urbania (17-Seater) rentals.</p>
             </div>
           </div>
 

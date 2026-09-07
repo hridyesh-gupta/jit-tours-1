@@ -32,7 +32,10 @@ export default function Header({ onOpenBooking }) {
         {/* Navigation Links */}
         <nav className="hidden lg:flex items-center space-x-6 text-xs font-semibold text-slate-300">
           <button onClick={() => scrollTo('fleet')} className="hover:text-amber-400 transition cursor-pointer">
-            Cars (Dzire/Ertiga/Innova)
+            Our Fleet
+          </button>
+          <button onClick={() => scrollTo('popular-destinations')} className="hover:text-amber-400 transition cursor-pointer">
+            Popular Destinations
           </button>
           <button onClick={() => scrollTo('local-attractions')} className="hover:text-amber-400 text-amber-400/90 transition cursor-pointer flex items-center space-x-1">
             <MapPin className="w-3 h-3 text-amber-400" />

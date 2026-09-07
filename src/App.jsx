@@ -3,30 +3,24 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import DistanceCalculator from './components/DistanceCalculator';
 import FleetSection from './components/FleetSection';
+import PopularDestinationsSection from './components/PopularDestinationsSection';
 import LocalAttractionsSection from './components/LocalAttractionsSection';
 import WhyChooseUs from './components/WhyChooseUs';
 import ServicesSection from './components/ServicesSection';
 import TestimonialsFAQ from './components/TestimonialsFAQ';
 import Footer from './components/Footer';
-import BookingWizard from './components/BookingWizard';
+import ContactForm from './components/ContactForm';
 import { PhoneCall, MessageCircle } from 'lucide-react';
 import { OWNER_PHONE, OWNER_WHATSAPP_NUMBER } from './data/fleetData';
 
 export default function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [initialRoute, setInitialRoute] = useState(null);
   const [initialCar, setInitialCar] = useState(null);
+  const [initialPlace, setInitialPlace] = useState(null);
 
-  const handleOpenBooking = (carName = null, category = null) => {
-    if (carName) {
-      setInitialCar(carName);
-    }
-    setInitialRoute(null);
-    setIsBookingOpen(true);
-  };
-
-  const handleOpenBookingWithRoute = (routeData) => {
-    setInitialRoute(routeData);
+  const handleOpenBooking = (carName = null, place = null) => {
+    setInitialCar(carName);
+    setInitialPlace(place);
     setIsBookingOpen(true);
   };
 
@@ -40,41 +34,45 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans relative">
       <Header onOpenBooking={handleOpenBooking} />
-      
+
       <main className="flex-grow">
-        <Hero 
-          onOpenBooking={handleOpenBooking} 
-          scrollToCalculator={handleScrollToCalculator} 
-        />
-        
-        <DistanceCalculator 
-          onOpenBookingWithRoute={handleOpenBookingWithRoute} 
-        />
-        
-        <FleetSection 
-          onOpenBookingWithCar={(carName) => handleOpenBooking(carName)} 
+        <Hero
+          onOpenBooking={handleOpenBooking}
+          scrollToCalculator={handleScrollToCalculator}
         />
 
-        <LocalAttractionsSection 
+        <DistanceCalculator
           onOpenBooking={handleOpenBooking}
         />
-        
+
+        <FleetSection
+          onOpenBookingWithCar={(carName) => handleOpenBooking(carName)}
+        />
+
+        <PopularDestinationsSection
+          onOpenBooking={handleOpenBooking}
+        />
+
+        <LocalAttractionsSection
+          onOpenBooking={handleOpenBooking}
+        />
+
         <WhyChooseUs />
 
-        <ServicesSection 
+        <ServicesSection
           onOpenBooking={handleOpenBooking}
         />
-        
+
         <TestimonialsFAQ />
       </main>
 
       <Footer onOpenBooking={handleOpenBooking} />
 
-      <BookingWizard
+      <ContactForm
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
-        initialRoute={initialRoute}
         initialCar={initialCar}
+        initialPlace={initialPlace}
       />
 
       {/* Floating Quick WhatsApp & Phone Buttons */}

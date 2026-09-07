@@ -63,8 +63,7 @@ export default function Footer({ onOpenBooking }) {
               <li><button onClick={() => onOpenBooking('Maruti Suzuki Dzire (5 Seater)')} className="hover:text-amber-400 transition cursor-pointer text-left">Dzire 5-Seater Sedan</button></li>
               <li><button onClick={() => onOpenBooking('Maruti Suzuki Ertiga (7 Seater)')} className="hover:text-amber-400 transition cursor-pointer text-left">Ertiga 7-Seater MPV</button></li>
               <li><button onClick={() => onOpenBooking('Toyota Innova Crysta (7 Seater)')} className="hover:text-amber-400 transition cursor-pointer text-left">Innova Crysta 7-Seater Luxury</button></li>
-              <li><button onClick={() => onOpenBooking('Mahindra Scorpio-N (7 Seater 4x4)')} className="hover:text-amber-400 transition cursor-pointer text-left">Scorpio-N 7-Seater 4x4</button></li>
-              <li><button onClick={() => onOpenBooking('Toyota Fortuner 4x4 (7 Seater VIP)')} className="hover:text-amber-400 transition cursor-pointer text-left">Fortuner 4x4 VIP Executive</button></li>
+              <li><button onClick={() => onOpenBooking('Force Urbania (17 Seater)')} className="hover:text-amber-400 transition cursor-pointer text-left">Force Urbania 17-Seater</button></li>
             </ul>
           </div>
 

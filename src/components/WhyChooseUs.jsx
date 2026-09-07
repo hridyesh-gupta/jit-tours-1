@@ -27,7 +27,7 @@ export default function WhyChooseUs() {
     {
       icon: Car,
       title: 'Well-Maintained Vehicles',
-      desc: 'Our complete fleet including Maruti Dzire (5 Seater), Maruti Ertiga (7 Seater), and Toyota Innova Crysta (7 Seater) undergoes regular mechanical service and deep sanitization.'
+      desc: 'Our complete fleet including Maruti Dzire (5 Seater), Maruti Ertiga (7 Seater), Toyota Innova Crysta (7 Seater), and the Force Urbania (17 Seater) undergoes regular mechanical service and deep sanitization.'
     },
     {
       icon: ShieldCheck,
@@ -37,7 +37,7 @@ export default function WhyChooseUs() {
     {
       icon: DollarSign,
       title: 'Transparent Pricing',
-      desc: 'Fixed per-kilometer rates (Dzire ₹13/km, Ertiga ₹17/km, Innova ₹21/km) with clear driver allowances. Zero hidden charges, no unannounced toll traps, and no surge multipliers.'
+      desc: 'Fixed per-kilometer rates (Dzire ₹13/km, Ertiga ₹17/km, Innova ₹21/km, Urbania ₹32/km) with clear driver allowances. Zero hidden charges, no unannounced toll traps, and no surge multipliers.'
     },
     {
       icon: Clock,
@@ -157,6 +157,10 @@ export default function WhyChooseUs() {
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 <span>Innova Crysta: ₹21/km</span>
               </div>
+              <div className="flex items-center space-x-1.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>Force Urbania (17-Seater): ₹32/km</span>
+              </div>
             </div>
           </div>
 
@@ -173,9 +177,13 @@ export default function WhyChooseUs() {
               <span className="text-slate-400">Toyota Innova Crysta (7 Seater):</span>
               <span className="font-bold text-amber-400">₹21 / km</span>
             </div>
+            <div className="flex justify-between border-b border-slate-800 pb-2">
+              <span className="text-slate-400">Force Urbania (17 Seater):</span>
+              <span className="font-bold text-amber-400">₹32 / km</span>
+            </div>
             <div className="flex justify-between">
               <span className="text-slate-400">Driver Daily Allowance:</span>
-              <span className="font-bold text-emerald-400">₹400 – ₹500 / day</span>
+              <span className="font-bold text-emerald-400">₹400 – ₹600 / day</span>
             </div>
           </div>
         </div>

@@ -46,12 +46,24 @@ export default function TestimonialsFAQ() {
       name: 'Vikramaditya Singhania',
       location: 'Rewa, MP',
       route: 'Prayagraj ➔ Rewa Waterfalls (Keoti & Bahuti)',
-      carUsed: 'Innova Crysta + Scorpio-N',
+      carUsed: 'Innova Crysta (7 Seater)',
       stars: 5,
       date: 'Visited 2 months ago',
-      comment: 'Jit Tours and Travels arranged a 2-car convoy for our weekend monsoon trip to Keoti and Bahuti waterfalls in Rewa. Flawless timing, spotless vehicles, and safe mountain driving skills.',
+      comment: 'Booked an Innova Crysta for our weekend monsoon trip to Keoti and Bahuti waterfalls in Rewa. Flawless timing, a spotless vehicle, and the driver handled the ghat roads very safely.',
       avatarBg: 'from-purple-600 to-pink-700',
       initials: 'VS'
+    },
+    {
+      id: 7,
+      name: 'Kavita & Manoj Agarwal',
+      location: 'Kanpur, UP',
+      route: 'Wedding Guest Pickup — Kanpur to Prayagraj',
+      carUsed: 'Force Urbania (17 Seater)',
+      stars: 5,
+      date: 'Visited 1 month ago',
+      comment: 'We hired the Urbania for our daughter\'s wedding to bring 15 relatives from Kanpur to Prayagraj. Comfortable AC seating for the whole group and the driver coordinated timings perfectly with our event schedule.',
+      avatarBg: 'from-amber-600 to-orange-700',
+      initials: 'KA'
     },
     {
       id: 5,
@@ -82,7 +94,7 @@ export default function TestimonialsFAQ() {
   const FAQS = [
     {
       q: 'Which vehicles are available at Jit Tours and Travels?',
-      a: 'We provide Maruti Suzuki Dzire (5-Seater Sedan), Maruti Suzuki Ertiga (7-Seater Economy MPV), and Toyota Innova Crysta (7-Seater Luxury MPV), as well as Mahindra Scorpio-N (4x4) and Toyota Fortuner for VIP tours across UP and MP.'
+      a: 'We provide Maruti Suzuki Dzire (5-Seater Sedan), Maruti Suzuki Ertiga (7-Seater Economy MPV), Toyota Innova Crysta (7-Seater Luxury MPV), and the Force Urbania (17-Seater) for larger groups, weddings, and family functions across UP and MP.'
     },
     {
       q: 'Do you provide full-day local sightseeing cabs in Prayagraj?',
@@ -98,7 +110,7 @@ export default function TestimonialsFAQ() {
     },
     {
       q: 'How does your transparent per-kilometer pricing work?',
-      a: 'Our fares are calculated as: Total Fare = (Total Distance in KM × Rate per KM) + (Number of Days × Driver Daily Allowance) + Actual State Tolls/Permits. Dzire starts at ₹13/km, Ertiga at ₹17/km, and Innova Crysta at ₹21/km.'
+      a: 'Our fares are calculated as: Total Fare = (Total Distance in KM × Rate per KM) + (Number of Days × Driver Daily Allowance) + Actual State Tolls/Permits. Dzire starts at ₹13/km, Ertiga at ₹17/km, Innova Crysta at ₹21/km, and the Force Urbania (17-Seater) at ₹32/km.'
     },
     {
       q: 'Do you provide Airport and Railway Station pickup & drop in Prayagraj?',
