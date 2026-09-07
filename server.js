@@ -7,6 +7,7 @@ import {
   buildOwnerAlertEmail,
   buildCustomerConfirmationEmail
 } from './api/_lib/email.js';
+import { saveEnquiry } from './api/_lib/db.js';
 
 dotenv.config();
 
@@ -233,6 +234,8 @@ app.post('/api/inquiry', async (req, res) => {
 
     const transporter = createTransporter();
 
+    let mode = 'mock';
+
     if (!transporter) {
       console.log('\n======================================================');
       console.log('📬 [MOCK GMAIL NOTIFICATION LOGGED - DEV MODE]');
@@ -241,70 +244,56 @@ app.post('/api/inquiry', async (req, res) => {
       console.log(`Car: ${carType || 'Not Sure'} | Place: ${place || 'Not Sure'}`);
       console.log('ℹ️ Mock mode active. To send real emails, generate an App Password in your Google Account.');
       console.log('======================================================\n');
+    } else {
+      const receiver = process.env.NOTIFICATION_RECEIVER || process.env.GMAIL_USER;
 
-      inquiryRecord.emailSent = false;
-      inquiriesStore.push(inquiryRecord);
+      try {
+        await transporter.sendMail({
+          from: `"Jit Tours and Travels Enquiry System" <${process.env.GMAIL_USER}>`,
+          to: receiver,
+          subject: `🚘 [NEW ENQUIRY ${bookingId}] ${fullName} — ${carType || 'Any Car'} to ${place || 'Not Specified'}`,
+          html: ownerHtml
+        });
 
-      return res.status(200).json({
-        success: true,
-        mode: 'mock',
-        emailSent: false,
-        bookingId,
-        message: 'Enquiry received successfully!'
-      });
-    }
+        await transporter.sendMail({
+          from: `"Jit Tours and Travels" <${process.env.GMAIL_USER}>`,
+          to: email,
+          subject: `We've Received Your Enquiry [${bookingId}] - Jit Tours and Travels`,
+          html: customerHtml
+        });
 
-    const receiver = process.env.NOTIFICATION_RECEIVER || process.env.GMAIL_USER;
+        mode = 'live';
+        inquiryRecord.emailSent = true;
 
-    try {
-      await transporter.sendMail({
-        from: `"Jit Tours and Travels Enquiry System" <${process.env.GMAIL_USER}>`,
-        to: receiver,
-        subject: `🚘 [NEW ENQUIRY ${bookingId}] ${fullName} — ${carType || 'Any Car'} to ${place || 'Not Specified'}`,
-        html: ownerHtml
-      });
+        console.log(`\n✅ [GMAIL SENT] Enquiry Ref ${bookingId} dispatched successfully to ${receiver} and ${email}\n`);
 
-      await transporter.sendMail({
-        from: `"Jit Tours and Travels" <${process.env.GMAIL_USER}>`,
-        to: email,
-        subject: `We've Received Your Enquiry [${bookingId}] - Jit Tours and Travels`,
-        html: customerHtml
-      });
+      } catch (mailError) {
+        console.error('\n⚠️ [GMAIL DISPATCH NOTICE]:', mailError.message);
+        if (mailError.code === 'EAUTH') {
+          console.error('👉 Cause: Google rejected the Gmail App Password.');
+          console.error('👉 Solution: Generate a 16-character App Password at: https://myaccount.google.com/apppasswords');
+        }
+        console.log(`📦 Enquiry Ref ${bookingId} for ${fullName} (${phone}) has been securely logged on the server.\n`);
 
-      inquiryRecord.emailSent = true;
-      inquiriesStore.push(inquiryRecord);
-
-      console.log(`\n✅ [GMAIL SENT] Enquiry Ref ${bookingId} dispatched successfully to ${receiver} and ${email}\n`);
-
-      return res.status(200).json({
-        success: true,
-        mode: 'live',
-        emailSent: true,
-        bookingId,
-        message: 'Enquiry submitted! Confirmation email sent.'
-      });
-
-    } catch (mailError) {
-      console.error('\n⚠️ [GMAIL DISPATCH NOTICE]:', mailError.message);
-      if (mailError.code === 'EAUTH') {
-        console.error('👉 Cause: Google rejected the Gmail App Password.');
-        console.error('👉 Solution: Generate a 16-character App Password at: https://myaccount.google.com/apppasswords');
+        mode = 'logged_fallback';
+        inquiryRecord.emailError = mailError.message;
       }
-      console.log(`📦 Enquiry Ref ${bookingId} for ${fullName} (${phone}) has been securely logged on the server.\n`);
-
-      inquiryRecord.emailSent = false;
-      inquiryRecord.emailError = mailError.message;
-      inquiriesStore.push(inquiryRecord);
-
-      return res.status(200).json({
-        success: true,
-        mode: 'logged_fallback',
-        emailSent: false,
-        emailError: mailError.message,
-        bookingId,
-        message: 'Enquiry received! Ref: ' + bookingId
-      });
     }
+
+    inquiriesStore.push(inquiryRecord);
+
+    // Best-effort — an unconfigured or unreachable database never blocks
+    // the customer from getting their confirmation.
+    await saveEnquiry({ bookingId, fullName, email, phone, carType, place, message, emailSent: inquiryRecord.emailSent });
+
+    return res.status(200).json({
+      success: true,
+      mode,
+      emailSent: inquiryRecord.emailSent,
+      emailError: inquiryRecord.emailError,
+      bookingId,
+      message: inquiryRecord.emailSent ? 'Enquiry submitted! Confirmation email sent.' : 'Enquiry received! Ref: ' + bookingId
+    });
 
   } catch (error) {
     console.error('Error handling enquiry:', error);

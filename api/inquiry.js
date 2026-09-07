@@ -4,6 +4,7 @@ import {
   buildOwnerAlertEmail,
   buildCustomerConfirmationEmail
 } from './_lib/email.js';
+import { saveEnquiry } from './_lib/db.js';
 
 export default async function handler(req, res) {
   // CORS headers
@@ -44,55 +45,51 @@ export default async function handler(req, res) {
 
     const transporter = createTransporter();
 
+    let mode = 'mock';
+    let emailSent = false;
+    let emailError = null;
+
     if (!transporter) {
       console.log(`[MOCK] Enquiry ${bookingId} from ${fullName} (${phone}, ${email}) - Car: ${carType || 'N/A'}, Place: ${place || 'N/A'}`);
+    } else {
+      const receiver = process.env.NOTIFICATION_RECEIVER || process.env.GMAIL_USER;
 
-      return res.status(200).json({
-        success: true,
-        mode: 'mock',
-        emailSent: false,
-        bookingId,
-        message: 'Enquiry received successfully!'
-      });
+      try {
+        await transporter.sendMail({
+          from: `"Jit Tours and Travels Enquiry System" <${process.env.GMAIL_USER}>`,
+          to: receiver,
+          subject: `🚘 [NEW ENQUIRY ${bookingId}] ${fullName} — ${carType || 'Any Car'} to ${place || 'Not Specified'}`,
+          html: ownerHtml
+        });
+
+        await transporter.sendMail({
+          from: `"Jit Tours and Travels" <${process.env.GMAIL_USER}>`,
+          to: email,
+          subject: `We've Received Your Enquiry [${bookingId}] - Jit Tours and Travels`,
+          html: customerHtml
+        });
+
+        mode = 'live';
+        emailSent = true;
+      } catch (mailError_) {
+        console.error('[GMAIL ERROR]:', mailError_.message);
+        mode = 'logged_fallback';
+        emailError = mailError_.message;
+      }
     }
 
-    const receiver = process.env.NOTIFICATION_RECEIVER || process.env.GMAIL_USER;
+    // Best-effort — an unconfigured or unreachable database never blocks
+    // the customer from getting their confirmation.
+    await saveEnquiry({ bookingId, fullName, email, phone, carType, place, message, emailSent });
 
-    try {
-      await transporter.sendMail({
-        from: `"Jit Tours and Travels Enquiry System" <${process.env.GMAIL_USER}>`,
-        to: receiver,
-        subject: `🚘 [NEW ENQUIRY ${bookingId}] ${fullName} — ${carType || 'Any Car'} to ${place || 'Not Specified'}`,
-        html: ownerHtml
-      });
-
-      await transporter.sendMail({
-        from: `"Jit Tours and Travels" <${process.env.GMAIL_USER}>`,
-        to: email,
-        subject: `We've Received Your Enquiry [${bookingId}] - Jit Tours and Travels`,
-        html: customerHtml
-      });
-
-      return res.status(200).json({
-        success: true,
-        mode: 'live',
-        emailSent: true,
-        bookingId,
-        message: 'Enquiry submitted! Confirmation email sent.'
-      });
-
-    } catch (mailError) {
-      console.error('[GMAIL ERROR]:', mailError.message);
-
-      return res.status(200).json({
-        success: true,
-        mode: 'logged_fallback',
-        emailSent: false,
-        emailError: mailError.message,
-        bookingId,
-        message: 'Enquiry received! Ref: ' + bookingId
-      });
-    }
+    return res.status(200).json({
+      success: true,
+      mode,
+      emailSent,
+      emailError,
+      bookingId,
+      message: emailSent ? 'Enquiry submitted! Confirmation email sent.' : 'Enquiry received! Ref: ' + bookingId
+    });
 
   } catch (error) {
     console.error('Error handling enquiry:', error);
