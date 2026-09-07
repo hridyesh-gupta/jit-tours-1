@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, ChevronDown, HelpCircle, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Star, ChevronDown, HelpCircle, Sparkles } from 'lucide-react';
 
 export default function TestimonialsFAQ() {
   const [openFaq, setOpenFaq] = useState(0);
@@ -128,79 +128,50 @@ export default function TestimonialsFAQ() {
         {/* Testimonials Section */}
         <div>
           {/* Header */}
-          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3 mb-10">
             <span className="text-xs uppercase tracking-widest font-mono text-amber-400 font-semibold inline-flex items-center space-x-1.5 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>PILGRIM & TRAVELER REVIEWS</span>
+              <span>REVIEWS</span>
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-              What Our Travelers Say About <span className="text-amber-500">Jit Tours and Travels</span>
+              What Travelers <span className="text-amber-500">Say</span>
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base">
-              Real experiences from families, pilgrims, and corporate professionals who traveled with us across UP & MP.
-            </p>
-
-            {/* Rating Summary Pill */}
-            <div className="pt-2 flex justify-center items-center space-x-3">
-              <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-800 px-4 py-1.5 rounded-full text-xs text-slate-300">
-                <div className="flex text-amber-400 space-x-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
-                  ))}
-                </div>
-                <span className="font-bold text-white">4.95 / 5.0</span>
-                <span className="text-slate-500">&bull;</span>
-                <span className="text-amber-400 font-semibold">1,450+ Verified Road Trips</span>
+            <div className="inline-flex items-center space-x-2 bg-slate-900/90 border border-slate-800 px-4 py-1.5 rounded-full text-xs text-slate-300">
+              <div className="flex text-amber-400 space-x-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
+                ))}
               </div>
+              <span className="font-bold text-white">4.95 / 5.0</span>
             </div>
           </div>
 
-          {/* Reviews Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Reviews Row — horizontally scrollable */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
             {REVIEWS.map((rev) => (
-              <div 
-                key={rev.id} 
-                className="glass-card p-6 rounded-2xl border border-slate-800 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between space-y-4 shadow-xl"
+              <div
+                key={rev.id}
+                className="flex-shrink-0 w-[280px] snap-start glass-card p-5 rounded-2xl border border-slate-800 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between space-y-3 shadow-xl"
               >
-                <div className="space-y-3">
-                  {/* Top Bar: Stars + Verified Badge */}
-                  <div className="flex justify-between items-center">
-                    <div className="flex text-amber-400 space-x-1">
-                      {[...Array(rev.stars)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-amber-400" />
-                      ))}
-                    </div>
-                    <span className="inline-flex items-center space-x-1 text-[10px] text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full">
-                      <CheckCircle2 className="w-3 h-3" />
-                      <span>Verified Trip</span>
-                    </span>
+                <div className="space-y-2.5">
+                  <div className="flex text-amber-400 space-x-1">
+                    {[...Array(rev.stars)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
+                    ))}
                   </div>
 
-                  {/* Route & Car Tag */}
-                  <div className="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800/80 space-y-1 text-xs">
-                    <div className="font-semibold text-amber-400 flex items-center space-x-1.5">
-                      <span>📍</span>
-                      <span>{rev.route}</span>
-                    </div>
-                    <div className="text-slate-400 text-[11px]">
-                      Vehicle: <strong className="text-slate-200">{rev.carUsed}</strong>
-                    </div>
-                  </div>
-
-                  {/* Comment */}
-                  <p className="text-xs text-slate-300 leading-relaxed italic">
+                  <p className="text-xs text-slate-300 leading-relaxed italic line-clamp-4">
                     "{rev.comment}"
                   </p>
                 </div>
 
-                {/* Author Info */}
                 <div className="pt-3 border-t border-slate-800/80 flex items-center space-x-3">
-                  <div className={`w-10 h-10 rounded-full bg-gradient-to-tr ${rev.avatarBg} flex items-center justify-center text-white font-bold text-xs shadow-md flex-shrink-0`}>
+                  <div className={`w-9 h-9 rounded-full bg-gradient-to-tr ${rev.avatarBg} flex items-center justify-center text-white font-bold text-xs shadow-md flex-shrink-0`}>
                     {rev.initials}
                   </div>
                   <div>
                     <strong className="block text-sm font-bold text-white leading-tight">{rev.name}</strong>
-                    <span className="text-[11px] text-slate-400">{rev.location} &bull; {rev.date}</span>
+                    <span className="text-[11px] text-slate-400">{rev.location}</span>
                   </div>
                 </div>
               </div>
@@ -216,7 +187,6 @@ export default function TestimonialsFAQ() {
               <span>Got Questions?</span>
             </div>
             <h2 className="text-3xl font-extrabold text-white">Frequently Asked Questions</h2>
-            <p className="text-slate-400 text-xs sm:text-sm">Everything you need to know about our cars, local sightseeing, chauffeurs, and UP/MP tours.</p>
           </div>
 
           <div className="space-y-4 pt-4">

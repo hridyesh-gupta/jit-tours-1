@@ -28,11 +28,8 @@ export default function DistanceCalculator({ onOpenBooking }) {
             <span>Interactive UP & MP Route Validator</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            Check Your Trip Distance <span className="text-amber-500">(UP & MP Destinations)</span>
+            Check Your <span className="text-amber-500">Trip Distance</span>
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
-            Calculate accurate road distances and taxi estimates across Varanasi, Ayodhya, Prayagraj, Chitrakoot, Lucknow, Rewa, Khajuraho, Maihar, and more with Jit Tours and Travels.
-          </p>
         </div>
 
         {/* Main Calculator Grid */}
@@ -106,7 +103,7 @@ export default function DistanceCalculator({ onOpenBooking }) {
             {/* Popular Shortcut Pills */}
             <div>
               <span className="block text-xs font-semibold text-slate-400 mb-2.5">
-                🔥 Popular Regional Circuits (Click to Check):
+                Popular Routes
               </span>
               <div className="flex flex-wrap gap-2">
                 {POPULAR_ROUTES.map((route, idx) => (
@@ -170,20 +167,19 @@ export default function DistanceCalculator({ onOpenBooking }) {
               <div className="bg-emerald-950/40 border border-emerald-500/30 rounded-xl p-4 flex items-start space-x-3">
                 <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <div className="text-xs text-emerald-200">
-                  <strong className="block font-semibold text-emerald-300 text-sm mb-0.5">
-                    Direct Route Serviced by Jit Tours and Travels
+                  <strong className="block font-semibold text-emerald-300 text-sm">
+                    We cover this route!
                   </strong>
-                  Enjoy chauffeur-driven Dzire (5 Seater), Ertiga (7 Seater), and Innova Crysta (7 Seater) with door-to-door pickup.
                 </div>
               </div>
             ) : (
               <div className="bg-rose-950/40 border border-rose-500/30 rounded-xl p-4 flex items-start space-x-3">
                 <AlertTriangle className="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5" />
                 <div className="text-xs text-rose-200">
-                  <strong className="block font-semibold text-rose-300 text-sm mb-0.5">
-                    Custom Long-Distance Package
+                  <strong className="block font-semibold text-rose-300 text-sm">
+                    Too far for a standard trip
                   </strong>
-                  Please WhatsApp or call our desk to organize customized multi-day halts for this journey.
+                  Please WhatsApp or call us to arrange this.
                 </div>
               </div>
             )}
@@ -191,7 +187,7 @@ export default function DistanceCalculator({ onOpenBooking }) {
             {/* Action CTA */}
             <button
               disabled={!result.isWithinLimit}
-              onClick={() => onOpenBooking(null, dropObj?.name)}
+              onClick={() => onOpenBooking(null, dropObj?.name.split(/[,(]/)[0].trim())}
               className={`w-full py-3.5 rounded-xl font-bold transition flex items-center justify-center space-x-2 text-sm cursor-pointer ${
                 result.isWithinLimit
                   ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-lg shadow-amber-500/20'

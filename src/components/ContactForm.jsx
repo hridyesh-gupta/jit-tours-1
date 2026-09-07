@@ -20,6 +20,10 @@ import {
 const ALL_DESTINATIONS = [...FEATURED_DESTINATIONS, ...MORE_DESTINATIONS];
 const UP_DESTINATIONS = ALL_DESTINATIONS.filter(d => d.state.includes('Uttar Pradesh'));
 const MP_DESTINATIONS = ALL_DESTINATIONS.filter(d => !d.state.includes('Uttar Pradesh') && d.state.includes('Madhya Pradesh'));
+const KNOWN_PLACE_NAMES = new Set([
+  ...LOCAL_ATTRACTIONS.map(p => p.name),
+  ...ALL_DESTINATIONS.map(d => d.name)
+]);
 
 export default function ContactForm({ isOpen, onClose, initialCar = null, initialPlace = null }) {
   const [loading, setLoading] = useState(false);
@@ -188,6 +192,9 @@ export default function ContactForm({ isOpen, onClose, initialCar = null, initia
                   className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white text-sm focus:border-amber-500 focus:outline-none"
                 >
                   <option value="">Not Sure / Other</option>
+                  {formData.place && !KNOWN_PLACE_NAMES.has(formData.place) && (
+                    <option value={formData.place}>{formData.place}</option>
+                  )}
                   <optgroup label="Prayagraj Local Sightseeing">
                     {LOCAL_ATTRACTIONS.map(place => (
                       <option key={place.id} value={place.name}>{place.name}</option>
