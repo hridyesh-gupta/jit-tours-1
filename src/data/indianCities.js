@@ -70,9 +70,9 @@ export const POPULAR_ROUTES = [
   { from: 'prayagraj', to: 'varanasi', name: 'Prayagraj ➔ Varanasi (Kashi Vishwanath)', distance: 125, tag: 'Most Popular Holy Circuit', time: '2.5 - 3 hrs', RecommendedCar: 'Innova Crysta (7-Seater)' },
   { from: 'prayagraj', to: 'ayodhya', name: 'Prayagraj ➔ Ayodhya (Ram Mandir)', distance: 165, tag: 'Sacred Ramayana Route', time: '3.5 - 4 hrs', RecommendedCar: 'Ertiga (7-Seater)' },
   { from: 'prayagraj', to: 'chitrakoot-up', name: 'Prayagraj ➔ Chitrakoot Dham', distance: 130, tag: 'Holy Hill & Ghats', time: '3 hrs', RecommendedCar: 'Dzire (5-Seater)' },
-  { from: 'prayagraj', to: 'rewa-waterfalls', name: 'Prayagraj ➔ Rewa (Keoti & Bahuti Waterfalls)', distance: 140, tag: 'Scenic Waterfalls Tour', time: '3.5 hrs', RecommendedCar: 'Scorpio-N / Innova' },
+  { from: 'prayagraj', to: 'rewa-waterfalls', name: 'Prayagraj ➔ Rewa (Keoti & Bahuti Waterfalls)', distance: 140, tag: 'Scenic Waterfalls Tour', time: '3.5 hrs', RecommendedCar: 'Innova Crysta (7-Seater)' },
   { from: 'prayagraj', to: 'maihar', name: 'Prayagraj ➔ Maihar (Maa Sharda Temple)', distance: 210, tag: 'Shaktipeeth Pilgrimage', time: '4.5 hrs', RecommendedCar: 'Ertiga (7-Seater)' },
   { from: 'varanasi', to: 'vindhyachal', name: 'Varanasi ➔ Vindhyachal ➔ Mirzapur', distance: 80, tag: 'Tri-Temple Yatra', time: '2 hrs', RecommendedCar: 'Dzire (5-Seater)' },
   { from: 'lucknow', to: 'ayodhya', name: 'Lucknow ➔ Ayodhya Expressway', distance: 135, tag: 'Express Highway', time: '2.5 hrs', RecommendedCar: 'Innova Crysta (7-Seater)' },
-  { from: 'khajuraho', to: 'panna', name: 'Khajuraho ➔ Panna National Park & Diamond Mines', distance: 45, tag: 'Wildlife & Heritage', time: '1 hr', RecommendedCar: 'Scorpio-N (7-Seater)' }
+  { from: 'khajuraho', to: 'panna', name: 'Khajuraho ➔ Panna National Park & Diamond Mines', distance: 45, tag: 'Wildlife & Heritage', time: '1 hr', RecommendedCar: 'Innova Crysta (7-Seater)' }
 ];

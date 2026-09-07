@@ -97,7 +97,7 @@ export default function Hero({ onOpenBooking, scrollToCalculator }) {
                 
                 <div className="relative rounded-lg overflow-hidden h-56 bg-slate-900">
                   <img
-                    src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80"
+                    src="/images/innova-new.png"
                     alt="Toyota Innova Crysta 7-Seater"
                     className="w-full h-full object-cover transform hover:scale-105 transition duration-500"
                   />

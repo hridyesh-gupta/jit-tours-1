@@ -24,7 +24,7 @@ export default function ServicesSection({ onOpenBooking }) {
       title: 'Customized Tour Packages',
       tagline: 'Personalized Itineraries & Sightseeing',
       desc: 'Bespoke holiday and weekend getaway packages across hill stations, heritage circuits, and pilgrimage destinations with flexible stops.',
-      cars: 'Dzire 5-Seater / Innova Crysta 7-Seater',
+      cars: 'Dzire 5-Seater / Innova Crysta 7-Seater / Force Urbania',
       features: ['Flexible Multi-City Itinerary', 'Local Route Master Chauffeur', 'Sightseeing & Temple Halt Flexibility']
     },
     {
@@ -51,7 +51,7 @@ export default function ServicesSection({ onOpenBooking }) {
       title: 'Corporate Car Rental',
       tagline: 'Executive & Business Delegate Travel',
       desc: 'Professional chauffeur-driven sedans and luxury MPVs for business executives, client meetings, corporate delegations, and VIP guests.',
-      cars: 'Innova Crysta / Dzire / Fortuner 4x4',
+      cars: 'Innova Crysta / Dzire',
       features: ['GST Invoicing & Billing', 'Uniformed Chauffeurs', 'In-Car Wi-Fi & Bottled Water']
     },
     {
@@ -69,7 +69,7 @@ export default function ServicesSection({ onOpenBooking }) {
       title: 'Multi-Day Car Rental',
       tagline: 'Long-Distance & Inter-State Outstation',
       desc: 'Hire a car and chauffeur for 2 to 10+ day journeys across states (within 1,500 km safe radius). Perfect for continuous holiday tours.',
-      cars: 'Innova Crysta 7-Seater / Ertiga / Scorpio',
+      cars: 'Innova Crysta 7-Seater / Ertiga / Force Urbania',
       features: ['Fixed Daily Allowance System', 'Inter-State Commercial Permits', 'Zero Driver Fatigue Guarantee']
     },
     {
@@ -78,7 +78,7 @@ export default function ServicesSection({ onOpenBooking }) {
       title: 'Wedding & Event Transportation',
       tagline: 'Baraat, Bride & Groom, & Guest Convoys',
       desc: 'Premium fleet coordination for weddings, family functions, and grand ceremonies. Coordinated fleets of sedans and luxury 7-seaters.',
-      cars: 'Innova Crysta / Fortuner / Dzire Convoy',
+      cars: 'Force Urbania / Innova Crysta / Dzire Convoy',
       features: ['Floral Decoration Options', 'Multi-Car Convoy Coordination', 'VIP Guest Transit Management']
     },
     {
@@ -96,7 +96,7 @@ export default function ServicesSection({ onOpenBooking }) {
       title: 'Group Tour Transportation',
       tagline: 'Spacious Multi-Passenger Travel',
       desc: 'Travel together with friends and extended families without feeling cramped. Ample luggage room with optional rooftop luggage carriers.',
-      cars: '7-Seater Innova Crysta / Ertiga / Scorpio-N',
+      cars: 'Force Urbania (17-Seater) / Innova Crysta / Ertiga',
       features: ['Roof-Mounted Luggage Carriers', 'High-Bass Surround Audio System', 'Group Route Planning Assistance']
     }
   ];

@@ -152,7 +152,7 @@ export default function LocalAttractionsSection({ onOpenBooking }) {
                   </a>
 
                   <button
-                    onClick={() => onOpenBooking(place.recommendedCar.split('/')[0].trim())}
+                    onClick={() => onOpenBooking(place.recommendedCar.split('/')[0].trim(), place.name)}
                     className="py-2.5 px-3 rounded-xl bg-amber-500/15 hover:bg-amber-500 text-amber-400 hover:text-slate-950 border border-amber-500/30 transition text-xs font-bold flex items-center justify-center space-x-1 cursor-pointer"
                   >
                     <span>Book Cab</span>

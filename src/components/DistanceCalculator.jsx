@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { INDIAN_CITIES, calculateRoadDistance, POPULAR_ROUTES } from '../data/indianCities';
 import { MapPin, Navigation, AlertTriangle, CheckCircle2, ArrowRight } from 'lucide-react';
 
-export default function DistanceCalculator({ onOpenBookingWithRoute }) {
+export default function DistanceCalculator({ onOpenBooking }) {
   const [pickupCity, setPickupCity] = useState('prayagraj');
   const [dropCity, setDropCity] = useState('varanasi');
 
@@ -191,7 +191,7 @@ export default function DistanceCalculator({ onOpenBookingWithRoute }) {
             {/* Action CTA */}
             <button
               disabled={!result.isWithinLimit}
-              onClick={() => onOpenBookingWithRoute({ pickupCity: pickupObj?.name, dropCity: dropObj?.name, calculatedDistance: `${result.distanceKm} km` })}
+              onClick={() => onOpenBooking(null, dropObj?.name)}
               className={`w-full py-3.5 rounded-xl font-bold transition flex items-center justify-center space-x-2 text-sm cursor-pointer ${
                 result.isWithinLimit
                   ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-lg shadow-amber-500/20'
