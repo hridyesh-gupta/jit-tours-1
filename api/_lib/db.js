@@ -27,3 +27,24 @@ export async function saveEnquiry({ bookingId, fullName, email, phone, carType, 
     return { saved: false, reason: err.message };
   }
 }
+
+// Returns the most recent enquiries for the admin panel, newest first.
+export async function listEnquiries(limit = 200) {
+  const client = getClient();
+  if (!client) {
+    return { rows: [], reason: 'DATABASE_URL not configured' };
+  }
+
+  try {
+    const rows = await client`
+      SELECT id, booking_id, full_name, email, phone, car_type, place, message, email_sent, created_at
+      FROM enquiries
+      ORDER BY created_at DESC
+      LIMIT ${limit}
+    `;
+    return { rows };
+  } catch (err) {
+    console.error('[DB] Failed to list enquiries:', err.message);
+    return { rows: [], reason: err.message };
+  }
+}

@@ -32,14 +32,12 @@ export const VEHICLE_FLEET = [
     transmission: 'Manual / AMT',
     rating: 4.9,
     reviews: 480,
-    badge: '★ Best Value 5-Seater',
+    badge: 'Best Value',
     image: '/images/dzire-new.png',
     features: [
-      'Comfortable 5-Seater Seating',
-      'Dual Front Airbags & ABS Safety',
-      'Rear AC Vents & High Fuel Economy',
-      'Spacious Boot for 3 Large Suitcases',
-      'Bottled Mineral Water & Music System'
+      'AC & Airbags',
+      'Great Mileage',
+      '3 Bags'
     ]
   },
   {
@@ -55,14 +53,12 @@ export const VEHICLE_FLEET = [
     transmission: 'Manual / Auto',
     rating: 4.85,
     reviews: 620,
-    badge: '★ Best Value 7-Seater Family MPV',
+    badge: 'Family Favourite',
     image: '/images/ertiga-new.png',
     features: [
-      'Spacious 7-Seater Seating Arrangement',
-      'Roof-Mounted Multi-Speed AC for all rows',
-      'Reclining 2nd & 3rd Row Comfortable Seats',
-      'USB Fast Charging Ports in every row',
-      'Smooth Suspensions for Long Family Journeys'
+      'Roof AC (All Rows)',
+      'Reclining Seats',
+      'USB Charging'
     ]
   },
   {
@@ -78,14 +74,12 @@ export const VEHICLE_FLEET = [
     transmission: 'Manual / Automatic',
     rating: 4.98,
     reviews: 840,
-    badge: '👑 King of Highways (7 Seater)',
+    badge: 'Most Popular',
     image: '/images/innova-new.png',
     features: [
-      'Plush 7-Seater Cabin with Captain Seats',
-      'Triple-Zone Automatic Climate Control',
-      'Ultra-Quiet Cushion Highway Cruise Ride',
-      'Ambient Cabin Lighting & Premium Interiors',
-      'Verified Highway Master Chauffeur'
+      'Captain Seats',
+      'Triple-Zone AC',
+      'Smooth Highway Ride'
     ]
   },
   {
@@ -101,14 +95,12 @@ export const VEHICLE_FLEET = [
     transmission: 'Manual',
     rating: 4.9,
     reviews: 96,
-    badge: '🚐 Best for Groups & Weddings',
-    image: '/images/urbania-new.png',
+    badge: 'For Groups & Weddings',
+    image: '/images/urbania-new.jpeg',
     features: [
-      '17-Seater Push-Back Recliner Cabin',
-      'Dedicated Roof AC for the Full Cabin',
-      'Ideal for Wedding Guest & Group Pilgrim Convoys',
-      'Large Luggage Deck for Multi-Day Tours',
-      'Experienced Highway Chauffeur'
+      'Push-Back Recliners',
+      'Full-Cabin AC',
+      'Big Luggage Deck'
     ]
   }
 ];

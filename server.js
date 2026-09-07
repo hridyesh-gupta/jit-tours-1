@@ -7,7 +7,8 @@ import {
   buildOwnerAlertEmail,
   buildCustomerConfirmationEmail
 } from './api/_lib/email.js';
-import { saveEnquiry } from './api/_lib/db.js';
+import { saveEnquiry, listEnquiries } from './api/_lib/db.js';
+import { isAdminConfigured, verifyCredentials, createSessionToken, verifySessionToken } from './api/_lib/auth.js';
 
 dotenv.config();
 
@@ -303,6 +304,38 @@ app.post('/api/inquiry', async (req, res) => {
       error: error.message
     });
   }
+});
+
+// Admin Panel — Login
+app.post('/api/admin/login', (req, res) => {
+  if (!isAdminConfigured()) {
+    return res.status(503).json({
+      success: false,
+      message: 'Admin login is not set up yet. Add ADMIN_USERNAME, ADMIN_PASSWORD, and ADMIN_SESSION_SECRET to your .env file.'
+    });
+  }
+
+  const { username, password } = req.body || {};
+
+  if (!verifyCredentials(username, password)) {
+    return res.status(401).json({ success: false, message: 'Incorrect username or password.' });
+  }
+
+  const token = createSessionToken(username);
+  res.status(200).json({ success: true, token });
+});
+
+// Admin Panel — List Enquiries (protected)
+app.get('/api/admin/enquiries', async (req, res) => {
+  const authHeader = req.headers.authorization || '';
+  const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
+
+  if (!verifySessionToken(token)) {
+    return res.status(401).json({ success: false, message: 'Not authenticated.' });
+  }
+
+  const { rows, reason } = await listEnquiries();
+  res.status(200).json({ success: true, enquiries: rows, notice: reason || null });
 });
 
 // Custom 404 Handler

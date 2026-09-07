@@ -24,21 +24,13 @@ export default function App() {
     setIsBookingOpen(true);
   };
 
-  const handleScrollToCalculator = () => {
-    const el = document.getElementById('distance-calculator');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans relative">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans relative overflow-x-hidden">
       <Header onOpenBooking={handleOpenBooking} />
 
       <main className="flex-grow">
         <Hero
           onOpenBooking={handleOpenBooking}
-          scrollToCalculator={handleScrollToCalculator}
         />
 
         <DistanceCalculator
@@ -75,24 +67,24 @@ export default function App() {
         initialPlace={initialPlace}
       />
 
-      {/* Floating Quick WhatsApp & Phone Buttons */}
-      <div className="fixed bottom-6 right-6 z-40 flex flex-col space-y-3">
+      {/* Floating Quick WhatsApp & Phone Buttons — fixed to the viewport, never part of page flow/width */}
+      <div className="fixed bottom-6 right-6 z-40 flex flex-col space-y-3 w-fit">
         <a
           href={`https://wa.me/${OWNER_WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello Jit Tours and Travels, I would like to inquire about booking a 5-seater or 7-seater car.')}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-13 h-13 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center shadow-2xl shadow-emerald-500/40 hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer group"
+          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center shadow-2xl shadow-emerald-500/40 hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer group"
           title="Direct WhatsApp with Owner"
         >
-          <MessageCircle className="w-7 h-7 fill-slate-950" />
+          <MessageCircle className="w-6 h-6 fill-slate-950" />
         </a>
 
         <a
           href={`tel:${OWNER_PHONE}`}
-          className="w-13 h-13 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 flex items-center justify-center shadow-2xl shadow-amber-500/40 hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer group"
+          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 flex items-center justify-center shadow-2xl shadow-amber-500/40 hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer group"
           title="Call Owner Hotline"
         >
-          <PhoneCall className="w-6 h-6 stroke-[2.5]" />
+          <PhoneCall className="w-5 h-5 stroke-[2.5]" />
         </a>
       </div>
     </div>
