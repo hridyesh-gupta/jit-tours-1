@@ -123,6 +123,7 @@ export default function Footer({ onOpenBooking }) {
           >
             HridxAI
           </a>
+          ...
         </div>
       </div>
     </footer>
